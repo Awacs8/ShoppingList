@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header";
-import ListInput from "./components/ListInput";
+import ListWrapper from "./components/ListWrapper";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <ListInput />
+      <ListWrapper />
     </div>
   );
 }
