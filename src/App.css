@@ -27,13 +27,13 @@
   background-size: cover;
   height: 100vh;
   font-family: "Lakki Reddy";
+  color: black;
 }
 .header {
   height: 9vh;
-  color: black;
 }
 .container {
-  background-color: rgba(128, 128, 128, 0.541);
+  background-color: rgba(128, 128, 128, 0.514);
   width: 70%;
   height: 90vh;
   border: 2px solid black;
@@ -44,23 +44,31 @@
   align-items: center;
 }
 .form-control {
-  background-color: rgba(30, 48, 82, 0.514);
+  background-color: rgba(50, 67, 99, 0.514);
   border: 1px solid black;
   color: black;
 }
 .form-control:focus {
-  background-color: rgba(30, 48, 82, 0.377);
-  color: black;
+  background-color: rgba(88, 120, 180, 0.377);
   border-color: black;
+  color: black;
 }
-
+.form-control::placeholder {
+  color: rgb(201, 197, 197);
+}
+.form-control:-ms-input-placeholder {
+  color: rgb(201, 197, 197);
+}
+.form-control::-ms-input-placeholder {
+  color: rgb(201, 197, 197);
+}
 .btn {
   float: right;
   border-radius: 30%;
+  margin: 5px;
 }
 .card {
-  background-color: rgba(30, 48, 82, 0.658);
-  color: black;
+  background-color: rgba(50, 67, 99, 0.74);
   border: 1px solid black;
   border-radius: 5px;
   overflow: hidden;

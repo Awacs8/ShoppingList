@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useEasybase } from "easybase-react";
 import { v4 as uuidv4 } from "uuid";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { ReactComponent as CartBtn } from "../assets/img/cart.svg";
 
 const ListWrapper = () => {
+  const {
+    Frame,
+    sync,
+    configureFrame,
+    addRecord,
+    deleteRecord,
+  } = useEasybase();
   const [title, setTitle] = useState("");
   const [item, setItem] = useState("");
   const [list, setList] = useState([]);
-  const [shoppingLists, setShoppingLists] = useState([
-    { id: 1, title: "Market", list: ["bread", "flour", "water"] },
-  ]);
+  // const [shoppingLists, setShoppingLists] = useState([
+  //   { id: 1, title: "Market", list: ["bread", "flour", "water"] },
+  // ]);
+
+  useEffect(() => {
+    configureFrame({ tableName: "SHOPPING LIST", limit: 10 });
+    sync();
+  }, []);
 
   let listItem = {
     id: uuidv4(),
@@ -23,16 +37,39 @@ const ListWrapper = () => {
     setItem("");
   };
 
-  const saveList = (listItem) => {
-    const tmp = [...shoppingLists, listItem];
-    setShoppingLists(tmp);
+  const saveList2 = () => {
+    addRecord({
+      tableName: "SHOPPING LIST",
+      newRecord: {
+        title: title,
+        itemList: list,
+        createdAt: new Date().toISOString(),
+      },
+    });
+
     setTitle("");
     setList([]);
+    sync();
   };
+  // const saveList = (listItem) => {
+  //   const tmp = [...shoppingLists, listItem];
+  //   setShoppingLists(tmp);
+  //   setTitle("");
+  //   setList([]);
+  // };
 
-  const deleteList = (id) => {
-    let tmp = shoppingLists.filter((el) => el.id !== id);
-    setShoppingLists(tmp);
+  // const deleteList = (id) => {
+  //   let tmp = shoppingLists.filter((el) => el.id !== id);
+  //   setShoppingLists(tmp);
+  // };
+
+  const deleteList2 = (index) => {
+    deleteRecord({
+      record: Frame(index),
+      tableName: "SHOPPING LIST",
+    });
+    // Frame().splice(index, 1);
+    sync();
   };
 
   return (
@@ -47,7 +84,7 @@ const ListWrapper = () => {
                 <Form.Label htmlFor="title">Add title</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="e.g.market"
+                  placeholder="e. g. market"
                   name="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
@@ -57,28 +94,20 @@ const ListWrapper = () => {
                 <Form.Label htmlFor="item">Add item</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="e.g.bread"
+                  placeholder="e. g. milk"
                   name="item"
                   value={item}
                   onChange={(e) => setItem(e.target.value)}
                 />
                 <Button variant="outline-dark" size="sm" onClick={addItem}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z" />
-                  </svg>
+                  <CartBtn />
                 </Button>
               </Form.Group>
             </Form>
           </Col>
           <Col className="output">
             <h4>{listItem.title}</h4>
-            <Button variant="outline-dark" onClick={() => saveList(listItem)}>
+            <Button variant="outline-dark" onClick={(_) => saveList2()}>
               save
             </Button>
             <ul>
@@ -90,7 +119,26 @@ const ListWrapper = () => {
         </Row>
         <h4>saved lists</h4>
         <Row lg={3} md={2} xs={1}>
-          {shoppingLists.map((el) => {
+          {Frame().map((item, index) => (
+            <Col className="card" key={index}>
+              <Button
+                variant="outline-dark"
+                size="sm"
+                onClick={() => deleteList2(index)}
+              >
+                x
+              </Button>
+              <h4>{item.title}</h4>
+              <ul key={title}>
+                {item.itemlist.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              {/* <p>{item.itemlist}</p> */}
+              <small>Created at: {item.createdat}</small>
+            </Col>
+          ))}
+          {/* {shoppingLists.map((el) => {
             const { id, title, list } = el;
             return (
               <Col key={id} className="card">
@@ -109,7 +157,7 @@ const ListWrapper = () => {
                 </ul>
               </Col>
             );
-          })}
+          })} */}
         </Row>
       </Container>
     </>
