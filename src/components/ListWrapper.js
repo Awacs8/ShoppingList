@@ -15,14 +15,11 @@ const ListWrapper = () => {
   const [title, setTitle] = useState("");
   const [item, setItem] = useState("");
   const [list, setList] = useState([]);
-  // const [shoppingLists, setShoppingLists] = useState([
-  //   { id: 1, title: "Market", list: ["bread", "flour", "water"] },
-  // ]);
 
   useEffect(() => {
     configureFrame({ tableName: "SHOPPING LIST", limit: 10 });
     sync();
-  }, []);
+  }, [configureFrame, sync]);
 
   let listItem = {
     id: uuidv4(),
@@ -33,37 +30,25 @@ const ListWrapper = () => {
   const addItem = (e) => {
     e.preventDefault();
     const tmp = [...list, item];
-    setList(tmp);
+    setList([...new Set(tmp)]);
     setItem("");
   };
 
-  const saveList2 = () => {
+  const saveList = () => {
     addRecord({
       tableName: "SHOPPING LIST",
       newRecord: {
         title: title,
         itemList: list,
-        createdAt: new Date().toISOString(),
+        createdAt: new Date().toString(),
       },
     });
-
     setTitle("");
     setList([]);
     sync();
   };
-  // const saveList = (listItem) => {
-  //   const tmp = [...shoppingLists, listItem];
-  //   setShoppingLists(tmp);
-  //   setTitle("");
-  //   setList([]);
-  // };
 
-  // const deleteList = (id) => {
-  //   let tmp = shoppingLists.filter((el) => el.id !== id);
-  //   setShoppingLists(tmp);
-  // };
-
-  const deleteList2 = (index) => {
+  const deleteList = (index) => {
     deleteRecord({
       record: Frame(index),
       tableName: "SHOPPING LIST",
@@ -107,7 +92,7 @@ const ListWrapper = () => {
           </Col>
           <Col className="output">
             <h4>{listItem.title}</h4>
-            <Button variant="outline-dark" onClick={(_) => saveList2()}>
+            <Button variant="outline-dark" onClick={(_) => saveList()}>
               save
             </Button>
             <ul>
@@ -124,7 +109,7 @@ const ListWrapper = () => {
               <Button
                 variant="outline-dark"
                 size="sm"
-                onClick={() => deleteList2(index)}
+                onClick={() => deleteList(index)}
               >
                 x
               </Button>
@@ -134,30 +119,9 @@ const ListWrapper = () => {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              {/* <p>{item.itemlist}</p> */}
               <small>Created at: {item.createdat}</small>
             </Col>
           ))}
-          {/* {shoppingLists.map((el) => {
-            const { id, title, list } = el;
-            return (
-              <Col key={id} className="card">
-                <Button
-                  variant="outline-dark"
-                  size="sm"
-                  onClick={() => deleteList(id)}
-                >
-                  x
-                </Button>
-                <h4>{title}</h4>
-                <ul key={title}>
-                  {list.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </Col>
-            );
-          })} */}
         </Row>
       </Container>
     </>
