@@ -91,6 +91,7 @@ const ListWrapper = () => {
             </Form>
           </Col>
           <Col className="output">
+            <h5>list preview</h5>
             <h4>{listItem.title}</h4>
             <Button variant="outline-dark" onClick={(_) => saveList()}>
               save
