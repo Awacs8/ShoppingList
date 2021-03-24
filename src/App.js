@@ -3,7 +3,7 @@ import { EasybaseProvider } from "easybase-react";
 import ebconfig from "./ebconfig";
 import "./App.css";
 import Header from "./components/Header";
-import ListWrapper from "./components/ListWrapper";
+import ListWrapper from "./containers/ListWrapper";
 
 function App() {
   return (

@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 /* SCROLLBAR */
@@ -39,6 +40,9 @@
   border: 2px solid black;
   border-radius: 10px;
   overflow: auto;
+}
+h4 {
+  text-decoration: underline;
 }
 .col {
   align-items: center;
