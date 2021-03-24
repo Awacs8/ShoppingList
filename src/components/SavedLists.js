@@ -12,7 +12,7 @@ const SavedLists = ({ Frame, deleteList }) => {
       >
         x
       </Button>
-      <h4>{item.title}</h4>
+      <h5>{item.title}</h5>
       <ul>
         {item.itemlist.map((item) => (
           <li key={item}>{item}</li>

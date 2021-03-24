@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 const ListPreview = ({ listItem, saveList }) => {
   return (
     <>
-      <h4>{listItem.title}</h4>
+      <h5>{listItem.title}</h5>
       <Button variant="outline-dark" onClick={(_) => saveList()}>
         save
       </Button>
