@@ -27,6 +27,11 @@ const ListWrapper = () => {
     setList([...new Set(tmp)]);
   };
 
+  const removeItem = (el) => {
+    const tmp = list.filter((item) => item !== el);
+    setList(tmp);
+  };
+
   let listItem = {
     id: uuidv4(),
     title: title,
@@ -67,7 +72,11 @@ const ListWrapper = () => {
 
           <Col className="output">
             <h4>list preview</h4>
-            <ListPreview listItem={listItem} saveList={saveList} />
+            <ListPreview
+              listItem={listItem}
+              saveList={saveList}
+              removeItem={removeItem}
+            />
           </Col>
         </Row>
         <h4>saved lists</h4>

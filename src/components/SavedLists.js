@@ -5,11 +5,7 @@ import moment from "moment";
 const SavedLists = ({ Frame, deleteList }) => {
   return Frame().map((item, index) => (
     <Col className="card" key={index}>
-      <Button
-        variant="outline-dark"
-        size="sm"
-        onClick={() => deleteList(index)}
-      >
+      <Button variant="danger" size="sm" onClick={() => deleteList(index)}>
         x
       </Button>
       <h5>{item.title}</h5>
