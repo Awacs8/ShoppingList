@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap");
+:root {
+  --fontFamily: "Lakki Reddy", sans-serif;
+  --black: rgb(0, 0, 0);
+  --darkBlue: rgba(50, 67, 99, 0.74);
+  --transparentDarkBlue: rgba(88, 120, 180, 0.377);
+  --grey: rgb(54, 52, 52);
+  --lightGrey: rgb(201, 197, 197);
+  --transparentGrey: rgba(128, 128, 128, 0.514);
+  --transition: 0.8s ease;
+}
 * {
   margin: 0;
   padding: 0;
@@ -27,17 +37,17 @@
   background-image: url("./assets/img/background2.jpg");
   background-size: cover;
   height: 100vh;
-  font-family: "Lakki Reddy";
-  color: black;
+  font-family: var(--fontFamily);
+  color: var(--black);
 }
 .header {
   height: 9vh;
 }
 .container {
-  background-color: rgba(128, 128, 128, 0.514);
+  background-color: var(--transparentGrey);
   width: 70%;
   height: 90vh;
-  border: 2px solid black;
+  border: 2px solid var(--black);
   border-radius: 10px;
   overflow: auto;
 }
@@ -47,46 +57,74 @@ h4 {
 .col {
   align-items: center;
 }
+
+/* FORM */
+
 .form-control {
-  background-color: rgba(50, 67, 99, 0.514);
-  border: 1px solid black;
-  color: black;
+  background-color: var(--darkBlue);
+  border: 1px solid var(--black);
+  color: var(--black);
+  transition: var(--transition);
 }
 .form-control:focus {
-  background-color: rgba(88, 120, 180, 0.377);
-  border-color: black;
-  color: black;
+  background-color: var(--transparentDarkBlue);
+  border-color: var(--black);
+  color: var(--black);
 }
 .form-control::placeholder {
-  color: rgb(201, 197, 197);
+  color: var(--lightGrey);
 }
 .form-control:-ms-input-placeholder {
-  color: rgb(201, 197, 197);
+  color: var(--lightGrey);
 }
 .form-control::-ms-input-placeholder {
-  color: rgb(201, 197, 197);
+  color: var(--lightGrey);
 }
+.form-check {
+  display: inline;
+  margin-left: 8%;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+  transition: var(--transition);
+}
+input[type="checkbox"]:not(:checked) {
+  box-shadow: 0 0 0 3px var(--grey);
+  transition: var(--transition);
+}
+input[type="checkbox"]:checked {
+  box-shadow: none;
+}
+
+/* BUTTONS */
+
 .btn {
   float: right;
   border-radius: 30%;
+  transition: var(--transition);
 }
 .btn-danger {
   border-radius: 50%;
   height: 20px;
   width: 20px;
   padding: 0;
+  margin-top: 5px;
+  margin-left: auto;
 }
 
+/* CARD */
+
 .card {
-  background-color: rgba(50, 67, 99, 0.74);
-  border: 1px solid black;
+  background-color: var(--darkBlue);
+  border: 1px solid var(--black);
   border-radius: 5px;
   overflow: hidden;
 }
-
-.card > button {
-  margin-top: 5px;
-  margin-left: auto;
+ul {
+  width: 95%;
+}
+small {
+  margin-top: auto;
 }
 
 @media (max-width: 768px) {

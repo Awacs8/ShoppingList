@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Button } from "react-bootstrap";
+import { Col, Button, Form } from "react-bootstrap";
 import moment from "moment";
 
 const SavedLists = ({ Frame, deleteList }) => {
@@ -10,8 +10,11 @@ const SavedLists = ({ Frame, deleteList }) => {
       </Button>
       <h5>{item.title}</h5>
       <ul>
-        {item.itemlist.map((item) => (
-          <li key={item}>{item}</li>
+        {item.itemlist.split(",").map((el) => (
+          <li key={el}>
+            <span>{el}</span>
+            <Form.Check type="checkbox" />{" "}
+          </li>
         ))}
       </ul>
       <small>Created at: {moment(item.createdat).format("lll")}</small>

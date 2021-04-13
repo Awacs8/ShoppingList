@@ -8,8 +8,9 @@ import ListWrapper from "./containers/ListWrapper";
 function App() {
   return (
     <div className="App">
+      <Header />
+      {/* <ListWrapper /> */}
       <EasybaseProvider ebconfig={ebconfig}>
-        <Header />
         <ListWrapper />
       </EasybaseProvider>
     </div>

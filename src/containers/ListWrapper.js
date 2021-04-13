@@ -14,11 +14,12 @@ const ListWrapper = () => {
     addRecord,
     deleteRecord,
   } = useEasybase();
+
   const [title, setTitle] = useState("");
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    configureFrame({ tableName: "SHOPPING LIST", limit: 10 });
+    configureFrame({ tableName: "SHOPPINGAPP", limit: 10 });
     sync();
   }, [configureFrame, sync]);
 
@@ -40,10 +41,10 @@ const ListWrapper = () => {
 
   const saveList = () => {
     addRecord({
-      tableName: "SHOPPING LIST",
+      tableName: "SHOPPINGAPP",
       newRecord: {
         title: title,
-        itemList: list,
+        itemlist: list.toString(),
         createdAt: new Date().toString(),
       },
     });
@@ -55,7 +56,7 @@ const ListWrapper = () => {
   const deleteList = (index) => {
     deleteRecord({
       record: Frame(index),
-      tableName: "SHOPPING LIST",
+      tableName: "SHOPPINGAPP",
     });
     // Frame().splice(index, 1);
     sync();
