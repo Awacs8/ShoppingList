@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <ListWrapper /> */}
       <EasybaseProvider ebconfig={ebconfig}>
         <ListWrapper />
       </EasybaseProvider>
