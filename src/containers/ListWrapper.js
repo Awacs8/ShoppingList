@@ -21,7 +21,7 @@ const ListWrapper = () => {
   useEffect(() => {
     configureFrame({ tableName: "SHOPPINGAPP", limit: 10 });
     sync();
-  }, [configureFrame, sync]);
+  }, []);
 
   const addItem = (item) => {
     const tmp = [...list, item];
