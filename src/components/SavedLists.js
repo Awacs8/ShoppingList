@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Col, Button, Form } from "react-bootstrap";
 import moment from "moment";
 
 const SavedLists = ({ Frame, deleteList }) => {
-  const [done, setDone] = useState(false);
   return Frame().map((item, index) => (
     <Col className="card" key={index}>
       <Button variant="danger" size="sm" onClick={() => deleteList(index)}>
@@ -12,12 +11,9 @@ const SavedLists = ({ Frame, deleteList }) => {
       <h5>{item.title}</h5>
       <ul>
         {item.itemlist.split(",").map((el) => (
-          <li
-            key={el}
-            //style={{ textDecoration: done ? "line-through" : "none" }}
-          >
+          <li key={el}>
             <span>{el}</span>
-            <Form.Check type="checkbox" onChange={() => setDone(!done)} />{" "}
+            <Form.Check type="checkbox" />{" "}
           </li>
         ))}
       </ul>

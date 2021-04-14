@@ -38,7 +38,6 @@ const CreateList = ({ addItem, setTitle, title }) => {
           variant="outline-dark"
           size="sm"
           onClick={() => {
-            //console.log(item);
             addItem(item);
             setItem("");
           }}
