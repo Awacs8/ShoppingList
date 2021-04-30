@@ -3,14 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { ReactComponent as CartBtn } from "../assets/img/cart.svg";
 
 const CreateList = ({ addItem, setTitle, title }) => {
-  //const [item, setItem] = useState({ text: "", done: false });
   const [item, setItem] = useState("");
-
-  // const handleChange = (e) => {
-  //   let name = e.target.name;
-  //   let tmp = e.target.value;
-  //   setItem({ ...item, [name]: tmp });
-  // };
 
   return (
     <Form>
@@ -31,7 +24,6 @@ const CreateList = ({ addItem, setTitle, title }) => {
           placeholder="e. g. milk"
           name="item"
           value={item}
-          //onChange={handleChange}
           onChange={(e) => setItem(e.target.value)}
         />
         <Button

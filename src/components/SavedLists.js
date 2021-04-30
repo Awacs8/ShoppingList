@@ -2,15 +2,15 @@ import React from "react";
 import { Col, Button, Form } from "react-bootstrap";
 import moment from "moment";
 
-const SavedLists = ({ Frame, deleteList }) => {
-  return Frame().map((item, index) => (
-    <Col className="card" key={index}>
-      <Button variant="danger" size="sm" onClick={() => deleteList(index)}>
+const SavedLists = ({ shoppingLists, deleteList }) => {
+  return shoppingLists.map((item) => (
+    <Col className="card" key={item.id}>
+      <Button variant="danger" size="sm" onClick={() => deleteList(item.id)}>
         x
       </Button>
       <h5>{item.title}</h5>
       <ul>
-        {item.itemlist.split(",").map((el) => (
+        {item.list.map((el) => (
           <li key={el}>
             <span>{el}</span>
             <Form.Check type="checkbox" />{" "}

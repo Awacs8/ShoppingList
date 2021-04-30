@@ -15,7 +15,7 @@ const ListPreview = ({ listItem, removeItem, saveList }) => {
           </li>
         ))}
       </ul>
-      <Button variant="outline-dark" onClick={(_) => saveList()}>
+      <Button variant="outline-dark" onClick={() => saveList()}>
         save
       </Button>
     </>

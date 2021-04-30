@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useEasybase } from "easybase-react";
+import React, { useState } from "react";
+//import { useEasybase } from "easybase-react";
 import { v4 as uuidv4 } from "uuid";
 import { Container, Row, Col } from "react-bootstrap";
 import CreateList from "../components/CreateList";
@@ -7,21 +7,24 @@ import ListPreview from "../components/ListPreview";
 import SavedLists from "../components/SavedLists";
 
 const ListWrapper = () => {
-  const {
-    Frame,
-    sync,
-    configureFrame,
-    addRecord,
-    deleteRecord,
-  } = useEasybase();
+  // const {
+  //   Frame,
+  //   sync,
+  //   configureFrame,
+  //   addRecord,
+  //   deleteRecord,
+  // } = useEasybase();
 
   const [title, setTitle] = useState("");
   const [list, setList] = useState([]);
+  const [shoppingLists, setShoppingLists] = useState([
+    { id: 1, title: "Market", list: ["bread", "flour", "water"] },
+  ]);
 
-  useEffect(() => {
-    configureFrame({ tableName: "SHOPPINGAPP", limit: 10 });
-    sync();
-  }, []);
+  // useEffect(() => {
+  //   configureFrame({ tableName: "SHOPPINGAPP", limit: 10 });
+  //   sync();
+  // }, []);
 
   const addItem = (item) => {
     const tmp = [...list, item];
@@ -40,26 +43,30 @@ const ListWrapper = () => {
   };
 
   const saveList = () => {
-    addRecord({
-      tableName: "SHOPPINGAPP",
-      newRecord: {
-        title: title,
-        itemlist: list.toString(),
-        createdAt: new Date().toString(),
-      },
-    });
+    // addRecord({
+    //   tableName: "SHOPPINGAPP",
+    //   newRecord: {
+    //     title: title,
+    //     itemlist: list.toString(),
+    //     createdAt: new Date().toString(),
+    //   },
+    // });
+    const tmp = [...shoppingLists, listItem];
+    setShoppingLists(tmp);
     setTitle("");
     setList([]);
-    sync();
+    //sync();
   };
 
-  const deleteList = (index) => {
-    deleteRecord({
-      record: Frame(index),
-      tableName: "SHOPPINGAPP",
-    });
+  const deleteList = (id) => {
+    // deleteRecord({
+    //   record: Frame(index),
+    //   tableName: "SHOPPINGAPP",
+    // });
     // Frame().splice(index, 1);
-    sync();
+    //sync();
+    let tmp = shoppingLists.filter((el) => el.id !== id);
+    setShoppingLists(tmp);
   };
 
   return (
@@ -82,7 +89,7 @@ const ListWrapper = () => {
         </Row>
         <h4>saved lists</h4>
         <Row lg={3} md={2} xs={1}>
-          <SavedLists Frame={Frame} deleteList={deleteList} />
+          <SavedLists shoppingLists={shoppingLists} deleteList={deleteList} />
         </Row>
       </Container>
     </>
