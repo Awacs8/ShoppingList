@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ShoppingList/static/css/main.e9e632db.chunk.css",
+    "main.css": "/ShoppingList/static/css/main.8fdaa73d.chunk.css",
     "main.js": "/ShoppingList/static/js/main.8ed93d11.chunk.js",
     "main.js.map": "/ShoppingList/static/js/main.8ed93d11.chunk.js.map",
     "runtime-main.js": "/ShoppingList/static/js/runtime-main.4dc86512.js",
@@ -8,7 +8,7 @@
     "static/js/2.d1486c48.chunk.js": "/ShoppingList/static/js/2.d1486c48.chunk.js",
     "static/js/2.d1486c48.chunk.js.map": "/ShoppingList/static/js/2.d1486c48.chunk.js.map",
     "index.html": "/ShoppingList/index.html",
-    "static/css/main.e9e632db.chunk.css.map": "/ShoppingList/static/css/main.e9e632db.chunk.css.map",
+    "static/css/main.8fdaa73d.chunk.css.map": "/ShoppingList/static/css/main.8fdaa73d.chunk.css.map",
     "static/js/2.d1486c48.chunk.js.LICENSE.txt": "/ShoppingList/static/js/2.d1486c48.chunk.js.LICENSE.txt",
     "static/media/App.css": "/ShoppingList/static/media/background2.b9a6d099.jpg",
     "static/media/cart.a86603a5.svg": "/ShoppingList/static/media/cart.a86603a5.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.4dc86512.js",
     "static/js/2.d1486c48.chunk.js",
-    "static/css/main.e9e632db.chunk.css",
+    "static/css/main.8fdaa73d.chunk.css",
     "static/js/main.8ed93d11.chunk.js"
   ]
 }
