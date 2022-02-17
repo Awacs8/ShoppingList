@@ -3,13 +3,13 @@ import React from "react";
 //import ebconfig from "./ebconfig";
 import "./App.css";
 import Header from "./components/Header";
-import ListWrapper from "./containers/ListWrapper";
+import Wrapper from "./containers/Wrapper";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <ListWrapper />
+      <Wrapper />
       {/* <EasybaseProvider ebconfig={ebconfig}>
         <ListWrapper />
       </EasybaseProvider> */}

@@ -95,10 +95,7 @@ h4 {
 input[type="checkbox"] {
   cursor: pointer;
   transition: var(--transition);
-}
-input[type="checkbox"]:not(:checked) {
-  box-shadow: 0 0 0 3px var(--grey);
-  transition: var(--transition);
+  box-shadow: 0 0 0 2px var(--grey);
 }
 input[type="checkbox"]:checked {
   box-shadow: none;

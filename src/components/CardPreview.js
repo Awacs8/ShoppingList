@@ -3,12 +3,12 @@ import { Button } from "react-bootstrap";
 import { ReactComponent as DeleteBtn } from "../assets/icons/x.svg";
 import { ReactComponent as SaveBtn } from "../assets/icons/checked.svg";
 
-const ListPreview = ({ listItem, removeItem, saveList }) => {
+const ListPreview = ({ item, removeItem, saveList, setTitle, setList }) => {
   return (
     <>
-      <h5>{listItem.title}</h5>
+      <h5>{item.title}</h5>
       <ul>
-        {listItem.list.map((el) => (
+        {item.list.map((el) => (
           <li key={el}>
             <span>{el}</span>
             <Button size="sm" onClick={() => removeItem(el)} variant="light">
@@ -17,10 +17,14 @@ const ListPreview = ({ listItem, removeItem, saveList }) => {
           </li>
         ))}
       </ul>
-      {listItem.list.length > 0 && (
+      {item.list.length > 0 && (
         <Button
           variant="light"
-          onClick={() => saveList()}
+          onClick={() => {
+            saveList(item);
+            setTitle("");
+            setList([]);
+          }}
           className="save-btn"
           data-bs-toggle="tooltip"
           title="save list"
