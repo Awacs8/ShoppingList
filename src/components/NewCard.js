@@ -56,7 +56,9 @@ const NewCard = ({ saveList }) => {
                   <Button
                     variant="secondary"
                     size="sm"
-                    onClick={() => {
+                    type="submit"
+                    onClick={(e) => {
+                      e.preventDefault();
                       addItem();
                       setListItem("");
                     }}

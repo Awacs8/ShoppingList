@@ -95,16 +95,14 @@ h4 {
 
 /* BUTTONS */
 
-.btn {
+.btn,
+.btn:hover {
   background-color: transparent;
   outline: none;
   transition: var(--transition);
   border: none;
 }
 .btn-delete {
-  background-color: transparent;
-  outline: none;
-  border: none;
   padding: 1px;
   margin-top: 5px;
   margin-left: auto;
@@ -132,6 +130,7 @@ ul {
 li > span {
   display: inline-block;
   width: 80%;
+  /* transition: var(--transition); */
 }
 
 small {
@@ -141,6 +140,9 @@ small {
 @media (max-width: 768px) {
   .header {
     height: 15vh;
+  }
+  h1 {
+    font-size: 30px;
   }
   .output {
     min-height: 40vh;
